@@ -1,5 +1,14 @@
-com/mrpetclinic/demo/model/PetType.class
 com/mrpetclinic/demo/model/Pet.class
+com/mrpetclinic/demo/services/VetService.class
 com/mrpetclinic/demo/model/Owner.class
+com/mrpetclinic/demo/services/CrudService.class
+com/mrpetclinic/demo/model/PetType.class
+com/mrpetclinic/demo/services/map/VetServiceMap.class
+com/mrpetclinic/demo/model/BaseEntity.class
+com/mrpetclinic/demo/services/PetService.class
+com/mrpetclinic/demo/services/map/PetServiceMap.class
+com/mrpetclinic/demo/services/map/AbstractMapService.class
+com/mrpetclinic/demo/services/map/OwnerServiceMap.class
 com/mrpetclinic/demo/model/Vet.class
+com/mrpetclinic/demo/services/OwnerService.class
 com/mrpetclinic/demo/model/Person.class
