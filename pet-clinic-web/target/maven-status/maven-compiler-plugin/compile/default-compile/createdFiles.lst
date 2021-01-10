@@ -1,2 +1,3 @@
 com/mrpetclinic/demo/MrPetClinicApplication.class
 com/mrpetclinic/demo/controllers/IndexController.class
+com/mrpetclinic/demo/controllers/VetController.class
