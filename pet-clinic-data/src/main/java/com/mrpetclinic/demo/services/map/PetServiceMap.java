@@ -1,11 +1,14 @@
 package com.mrpetclinic.demo.services.map;
 
 import com.mrpetclinic.demo.model.Pet;
-import com.mrpetclinic.demo.services.CrudService;
+import com.mrpetclinic.demo.services.PetService;
+import org.springframework.stereotype.Service;
 
 import java.util.Set;
 
-public class PetServiceMap  extends AbstractMapService<Pet, Long> implements CrudService<Pet, Long> {
+// A concrete class
+@Service    // this annotation makes the class a managed Spring bean so that it will be brought into the Spring context
+public class PetServiceMap  extends AbstractMapService<Pet, Long> implements PetService {
 
     @Override
     public Set<Pet> findAll() {
@@ -19,7 +22,7 @@ public class PetServiceMap  extends AbstractMapService<Pet, Long> implements Cru
 
     @Override
     public Pet save(Pet object) {
-        return super.save(object.getId(), object);
+        return super.save(object);
     }
 
     @Override

@@ -1,13 +1,15 @@
 package com.mrpetclinic.demo.services.map;
 
 import com.mrpetclinic.demo.model.Owner;
-import com.mrpetclinic.demo.services.CrudService;
+import com.mrpetclinic.demo.services.OwnerService;
+import org.springframework.stereotype.Service;
 
 import java.util.Set;
 
 
-// This is a concrete class
-public class OwnerServiceMap extends AbstractMapService<Owner, Long> implements CrudService<Owner, Long> {
+// A concrete class
+@Service    // this annotation makes the class a managed Spring bean so that it will be brought into the Spring context
+public class OwnerServiceMap extends AbstractMapService<Owner, Long> implements OwnerService {
 
     @Override
     public Set<Owner> findAll() {
@@ -21,7 +23,7 @@ public class OwnerServiceMap extends AbstractMapService<Owner, Long> implements 
 
     @Override
     public Owner save(Owner object) {
-        return super.save(object.getId(), object);
+        return super.save(object);
     }
 
     @Override
@@ -34,4 +36,8 @@ public class OwnerServiceMap extends AbstractMapService<Owner, Long> implements 
         super.deleteById(id);
     }
 
+    @Override
+    public Owner findByLastName(String lastName) {
+        return null;
+    }
 }
