@@ -1,3 +1,5 @@
+com/mrpetclinic/demo/controllers/VetController.class
 com/mrpetclinic/demo/MrPetClinicApplication.class
 com/mrpetclinic/demo/controllers/IndexController.class
-com/mrpetclinic/demo/controllers/VetController.class
+com/mrpetclinic/demo/bootstrap/DataLoader.class
+com/mrpetclinic/demo/controllers/OwnerController.class

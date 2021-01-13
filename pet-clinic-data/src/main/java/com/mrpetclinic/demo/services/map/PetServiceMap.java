@@ -8,7 +8,7 @@ import java.util.Set;
 
 // A concrete class
 @Service    // this annotation makes the class a managed Spring bean so that it will be brought into the Spring context
-public class PetServiceMap  extends AbstractMapService<Pet, Long> implements PetService {
+public class PetServiceMap extends AbstractMapService<Pet, Long> implements PetService {
 
     @Override
     public Set<Pet> findAll() {
