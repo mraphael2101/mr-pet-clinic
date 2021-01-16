@@ -6,7 +6,7 @@ import java.io.Serializable;
    Deserialization is the reverse process where the byte stream is used to recreate the
    actual object in memory.
 
-   BaseEntity is a JPA concept in where we have specific annotations */
+   BaseEntity is a JPA concept that has specific annotations */
 
 public class BaseEntity implements Serializable {
 
