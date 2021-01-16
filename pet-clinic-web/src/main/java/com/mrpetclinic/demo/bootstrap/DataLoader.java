@@ -1,11 +1,9 @@
 package com.mrpetclinic.demo.bootstrap;
 
-import com.mrpetclinic.demo.model.Owner;
-import com.mrpetclinic.demo.model.Pet;
-import com.mrpetclinic.demo.model.PetType;
-import com.mrpetclinic.demo.model.Vet;
+import com.mrpetclinic.demo.model.*;
 import com.mrpetclinic.demo.services.OwnerService;
 import com.mrpetclinic.demo.services.PetTypeService;
+import com.mrpetclinic.demo.services.SpecialityService;
 import com.mrpetclinic.demo.services.VetService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
@@ -19,24 +17,46 @@ public class DataLoader implements CommandLineRunner {
     private final OwnerService ownerService;
     private final VetService vetService;
     private final PetTypeService petTypeService;
+    private final SpecialityService specialityService;
 
     // Constructor based dependency injection to Spring App Context - Inversion of Control
-    public DataLoader(OwnerService ownerService, VetService vetService, PetTypeService petTypeService) {
+    public DataLoader(OwnerService ownerService, VetService vetService, PetTypeService petTypeService,
+                      SpecialityService specialityService) {
         this.ownerService = ownerService;
         this.vetService = vetService;
         this.petTypeService = petTypeService;
+        this.specialityService = specialityService;
     }
 
     @Override
     public void run(String... args) throws Exception {
 
+        int count = petTypeService.findAll().size();
+
+        if(count == 0)
+            loadData();
+    }
+
+    private void loadData() {
         PetType dog = new PetType();
         dog.setName("Dog");
-        PetType savedDogPetType = petTypeService.save(dog);
+        PetType savedDogPetType = petTypeService.save(dog); // Persist to Map to get Id value established
 
         PetType cat = new PetType();
         dog.setName("Cat");
-        PetType savedCatPetType = petTypeService.save(cat);
+        PetType savedCatPetType = petTypeService.save(cat); // Persist to Map to get Id value established
+
+        Speciality radiology = new Speciality();
+        radiology.setDescription("Radiology");
+        Speciality savedRadiology = specialityService.save(radiology);  // Persist to Map to get Id value established
+
+        Speciality surgery = new Speciality();
+        surgery.setDescription("Surgery");
+        Speciality savedSurgery = specialityService.save(surgery);  // Persist to Map to get Id value established
+
+        Speciality dentistry = new Speciality();
+        radiology.setDescription("dentistry");
+        Speciality savedDentistry = specialityService.save(dentistry);  // Persist to Map to get Id value established
 
         Owner owner1 = new Owner();
         owner1.setId(1L);
@@ -76,12 +96,14 @@ public class DataLoader implements CommandLineRunner {
         vet1.setId(1L);
         vet1.setFirstName("Sam");
         vet1.setLastName("Axe");
+        vet1.getSpecialities().add(savedDentistry);
         vetService.save(vet1);
 
         Vet vet2 = new Vet();
         vet2.setId(2L);
         vet2.setFirstName("Jessica");
         vet2.setLastName("Clement");
+        vet2.getSpecialities().add(savedSurgery);
         vetService.save(vet2);
         System.out.println("Loaded vets...");
     }
