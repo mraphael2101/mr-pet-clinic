@@ -7,7 +7,7 @@ import java.util.Set;
  * 3) This CrudService is mimicking the Spring Data Repository for a sub-set of methods that we want.
  *    Now all our Service Interfaces are going to inherit these methods */
 
-
+// CRUD: Create, Read, Update, and Delete
 public interface CrudService<T, ID> {
 
     Set<T> findAll();
