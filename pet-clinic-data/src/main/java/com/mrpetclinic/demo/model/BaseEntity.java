@@ -12,7 +12,7 @@ import java.io.Serializable;
    actual object in memory.
 */
 
-// Establishes this class as a Base Class for JPA
+// Establishes this class as a Base Class for JPA and indicates that the object is not to be created in the database
 @MappedSuperclass
 public class BaseEntity implements Serializable {
 

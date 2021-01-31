@@ -1,8 +1,17 @@
 package com.mrpetclinic.demo.model;
 
+import javax.persistence.Column;
+import javax.persistence.MappedSuperclass;
+
+// Indicates that the object is not to be created in the database for this class
+@MappedSuperclass
 public class Person extends BaseEntity {
 
-    private String firstName, lastName;
+    @Column(name = "first_name")
+    private String firstName;
+
+    @Column(name = "last_name")
+    private String lastName;
 
     public String getFirstName() {
         return firstName;
