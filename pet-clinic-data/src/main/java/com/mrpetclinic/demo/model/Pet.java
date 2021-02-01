@@ -2,6 +2,8 @@ package com.mrpetclinic.demo.model;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.HashSet;
+import java.util.Set;
 
 
 @Entity
@@ -24,6 +26,12 @@ public class Pet extends BaseEntity {
 
     @Column(name ="birth_date")
     private LocalDate birthDate;
+
+    // A Pet can VISIT a vet multiple times
+    // Each visit will become an individual attribute of a pet
+    // Setting up a relationship. Cascade type means if I delete a Pet the associated visit records for the pet will also get deleted i.e., cascade down
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "pet")
+    private Set<Visit> visits = new HashSet<>();
 
     public String getName() {
         return name;
@@ -57,4 +65,11 @@ public class Pet extends BaseEntity {
         this.birthDate = birthDate;
     }
 
+    public Set<Visit> getVisits() {
+        return visits;
+    }
+
+    public void setVisits(Set<Visit> visits) {
+        this.visits = visits;
+    }
 }
